@@ -7,8 +7,8 @@ final class HomeViewController: UIViewController {
                                         backgroundColor: .systemPink,
                                         title: "Present the thing!",
                                         textFormat: (17.0, .bold),
-                                        height: 56.0,
-                                        cornerRadius: 28.0,
+                                        height: 50.0,
+                                        cornerRadius: 25.0,
                                         padding: 16.0)
 
     override func viewDidLoad() {
@@ -23,6 +23,7 @@ final class HomeViewController: UIViewController {
     }
 
     @objc private func presentButtonTapped() {
-        present(CoolViewController(), interactiveDismissalType: .standard)
+        let coolViewController = CoolViewController()
+        present(coolViewController, interactiveDismissalType: .standard)
     }
 }
