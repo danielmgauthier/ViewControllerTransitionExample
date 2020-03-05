@@ -6,7 +6,7 @@ enum InteractiveDismissalType {
 }
 
 extension UIViewController {
-    func present(_ viewController: (UIViewController & CustomPresentable), interactiveDismissalType: InteractiveDismissalType, completion: (() -> Void)? = nil) {
+    func present(_ viewController: CustomPresentable, interactiveDismissalType: InteractiveDismissalType, completion: (() -> Void)? = nil) {
 
         let interactionController: InteractionControlling?
         switch interactiveDismissalType {

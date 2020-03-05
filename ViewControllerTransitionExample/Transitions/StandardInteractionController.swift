@@ -2,7 +2,7 @@ import UIKit
 
 class StandardInteractionController: NSObject, InteractionControlling {
     var interactionInProgress = false
-    private weak var viewController: (UIViewController & CustomPresentable)!
+    private weak var viewController: CustomPresentable!
     private weak var transitionContext: UIViewControllerContextTransitioning?
 
     private var interactionDistance: CGFloat = 0
@@ -11,7 +11,7 @@ class StandardInteractionController: NSObject, InteractionControlling {
     private var cancellationAnimator: UIViewPropertyAnimator?
 
     // MARK: - Setup
-    init(viewController: UIViewController & CustomPresentable) {
+    init(viewController: CustomPresentable) {
         self.viewController = viewController
         super.init()
         prepareGestureRecognizer(in: viewController.view)
@@ -125,7 +125,7 @@ class StandardInteractionController: NSObject, InteractionControlling {
 
     func finish(initialSpringVelocity: CGFloat) {
         guard let transitionContext = transitionContext, let presentedFrame = presentedFrame else { return }
-        let presentedViewController = transitionContext.viewController(forKey: .from) as! (CustomPresentable & UIViewController)
+        let presentedViewController = transitionContext.viewController(forKey: .from) as! CustomPresentable
         let dismissedFrame = CGRect(x: presentedFrame.minX, y: transitionContext.containerView.bounds.height, width: presentedFrame.width, height: presentedFrame.height)
 
         let timingParameters = UISpringTimingParameters(dampingRatio: 0.8, initialVelocity: CGVector(dx: 0, dy: initialSpringVelocity))
